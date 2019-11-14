@@ -6,7 +6,7 @@
 #    By: vkuokka <vkuokka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/18 11:41:03 by vkuokka           #+#    #+#              #
-#    Updated: 2019/10/29 14:11:56 by vkuokka          ###   ########.fr        #
+#    Updated: 2019/11/11 11:07:19 by vkuokka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,9 @@ SRCS =	srcs/ft_bzero.c \
 		srcs/ft_lstaddback.c \
 		srcs/ft_isupper.c \
 		srcs/ft_islower.c \
-		srcs/ft_swap.c
+		srcs/ft_swap.c \
+		srcs/ft_del.c \
+		srcs/ft_lstlen.c
 
 OBJ =	ft_bzero.o \
 		ft_memccpy.o \
@@ -138,7 +140,9 @@ OBJ =	ft_bzero.o \
 		ft_lstaddback.o \
 		ft_isupper.o \
 		ft_islower.o \
-		ft_swap.o
+		ft_swap.o \
+		ft_del.o \
+		ft_lstlen.o
 
 INCL =	includes/
 

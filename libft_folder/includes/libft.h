@@ -6,7 +6,7 @@
 /*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 14:38:55 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/10/29 11:30:55 by vkuokka          ###   ########.fr       */
+/*   Updated: 2019/11/11 11:08:32 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ void				ft_lstaddback(t_list **alst, t_list *new);
 int					ft_isupper(int c);
 int					ft_islower(int c);
 void				ft_swap(int *a, int *b);
+void				ft_del(void *content, size_t size);
+size_t				ft_lstlen(t_list **alst);
 
 #endif
