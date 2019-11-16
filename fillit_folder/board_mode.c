@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   board_mode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 10:03:34 by gmolin            #+#    #+#             */
-/*   Updated: 2019/11/12 16:34:19 by vkuokka          ###   ########.fr       */
+/*   Updated: 2019/11/15 11:15:38 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h> // delete before submission
 
-static int		board_size(size_t len)
+int		board_size(size_t len)
 {
 	float		temp;
 	float		sqrt;
@@ -37,23 +37,28 @@ static int		board_size(size_t len)
 char	*board_mode(size_t len)
 {
 	size_t		i;
-	char		*board;
+	size_t		j;
 	size_t		size;
-	//ft_putstr("start");
+	char		*board;
+	char		*a_board;
 	
 	i = 0;
-	//printf("This is len before board size %zu\n", len);
 	size = (board_size(len) + 1) * (board_size(len));
-	//printf("%zu\n", size);
 	if (!(board = (char*)malloc(sizeof(char) * (size + 1))))
 		return (0);
-	while (i < size)
+	while (i < size + 1)
 	{
 		board[i] = '.';
-		if (i % (board_size(len) + 1) == 0)
+		if (i % (board_size(len) + 1) == 0 && i != 0)
 			board[i] = '\n';
 		i++;
 	}
 	board[i] = '\0';
-	return (board);
+	i = 1;
+	j = 0;
+	a_board = (char*)malloc(sizeof(char) * (size + 1));
+	while (board[i])
+		a_board[j++] = board[i++];
+	a_board[j] = '\0';
+	return (a_board);
 }

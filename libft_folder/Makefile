@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkuokka <vkuokka@student.42.fr>            +#+  +:+       +#+         #
+#    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/18 11:41:03 by vkuokka           #+#    #+#              #
-#    Updated: 2019/11/11 11:07:19 by vkuokka          ###   ########.fr        #
+#    Updated: 2019/11/15 09:55:36 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	srcs/ft_bzero.c \
 		srcs/ft_memmove.c \
 		srcs/ft_memset.c \
 		srcs/ft_strlen.c \
+		srcs/ft_strclen.c \
 		srcs/ft_strdup.c \
 		srcs/ft_strcpy.c \
 		srcs/ft_strcat.c \
@@ -86,6 +87,7 @@ OBJ =	ft_bzero.o \
 		ft_memmove.o \
 		ft_memset.o \
 		ft_strlen.o \
+		ft_strclen.o \
 		ft_strdup.o \
 		ft_strcpy.o \
 		ft_strcat.o \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   placing_mode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:48:52 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/14 12:36:03 by vkuokka          ###   ########.fr       */
+/*   Updated: 2019/11/15 11:23:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	check_blocks(char *new, char *board)
 	}
 	if (let_a - let_b == 4)
 		return (1);
-	printf("\033[0;31mPlacing Error\033[0m\t\n");
+	//printf("\033[0;31mPlacing Error\033[0m\t\n");
 	return (0);
 }
 
@@ -49,9 +49,16 @@ int				slap(char *board, char *tblock, size_t start)
 
 	i = start;
 	j = 0;
+	//printf("A BOARD:\n%s", board);
+	//printf("A TBLOCK:\n%s", tblock);
 	new = NULL;
 	new = ft_strdup(board);
-	while (tblock[j] && new[i])
+	//printf("A NEW COPY:\n%s", new);
+	//return (0);
+	//printf("STRLEN OF NEW BEFORE: %zu\n", ft_strlen(new));
+	//printf("J BEFORE: %zu\n", j);
+	//I printf("I BEFORE: %zu\n", i);
+	while (i < ft_strlen(new) - 1 && new[i] && tblock[j])
 	{
 		(tblock[j] == '\n') ? j++ : 0;
 		(new[i] == '\n') ? i++ : 0;
@@ -61,14 +68,15 @@ int				slap(char *board, char *tblock, size_t start)
 				break ;
 			new[i] = tblock[j];
 		}
-		if (tblock[j] == '\n')
-			while (new[i] != '\n')
-				i++;
 		i++;
 		j++;
 	}
-	ft_putstr(new);
-	ft_putchar('\n');
+	//printf("J AFTER: %zu\n", j);
+	//printf("I AFTER: %zu\n", i);
+	//printf("AFTER PLACING\n%s", new);
+	//printf("STRLEN OF NEW: %zu\n", ft_strlen(new));
+	//printf("STRLEN OF TBLOCK: %zu\n", ft_strlen(tblock));
+	//return (0);
 	if (!check_blocks(new, board))
 	{
 		ft_strdel(&new);
@@ -76,7 +84,6 @@ int				slap(char *board, char *tblock, size_t start)
 	}
 	ft_memmove(board, new, ft_strlen(new));
 	ft_strdel(&new);
-	ft_putendl(board);
+	//ft_putendl(board);
 	return (1);
 }
- 
