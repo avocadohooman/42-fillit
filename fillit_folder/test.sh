@@ -31,3 +31,7 @@ echo ----8T Hard Test----
 ./a.out ../tetris_blocks/valid_hard_8t.txt
 echo ----8T Hard Comparison Test----
 ./fillit ../tetris_blocks/valid_hard_8t.txt
+echo ----10T Test----
+./a.out ../tetris_blocks/valid_10.txt
+echo ----10T Comparison Test----
+./fillit ../tetris_blocks/valid_10.txt

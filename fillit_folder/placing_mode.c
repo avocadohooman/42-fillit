@@ -50,10 +50,10 @@ int				slap(char *board, char *tblock, size_t start)
 	i = start;
 	j = 0;
 	//printf("A BOARD:\n%s", board);
-	//printf("A TBLOCK:\n%s", tblock);
+	printf("A TBLOCK:\n%s", tblock);
 	new = NULL;
 	new = ft_strdup(board);
-	//printf("A NEW COPY:\n%s", new);
+	printf("A NEW COPY:\n%s", new);
 	//return (0);
 	//printf("STRLEN OF NEW BEFORE: %zu\n", ft_strlen(new));
 	//printf("J BEFORE: %zu\n", j);
@@ -73,10 +73,10 @@ int				slap(char *board, char *tblock, size_t start)
 	}
 	//printf("J AFTER: %zu\n", j);
 	//printf("I AFTER: %zu\n", i);
-	//printf("AFTER PLACING\n%s", new);
+	printf("AFTER PLACING\n%s", new);
 	//printf("STRLEN OF NEW: %zu\n", ft_strlen(new));
 	//printf("STRLEN OF TBLOCK: %zu\n", ft_strlen(tblock));
-	//return (0);
+	return (0);
 	if (!check_blocks(new, board))
 	{
 		ft_strdel(&new);
