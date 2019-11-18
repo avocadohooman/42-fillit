@@ -117,6 +117,7 @@ static t_list		*add_block(char *s)
 	return (lstbegin);
 }
 
+
 static char				*purify(char *adjusted, size_t total)
 {
 	char		*pure;
@@ -141,6 +142,7 @@ static char				*purify(char *adjusted, size_t total)
 	return (pure);
 }
 
+
 static char 			*re_adjust(char *tblock, size_t len)
 {
 	char		*adjusted;
@@ -152,7 +154,7 @@ static char 			*re_adjust(char *tblock, size_t len)
 	j = 0;
 	c = 0;
 	//printf("%zu\n", len);
-	adjusted = (char *)malloc(sizeof(char) * ((len + 1) * len) + 1); //If we use here strnew and fill it with NULL terminators, we can skip the second while loop
+	adjusted = ft_strnew((len + 1) * len); //(char *)malloc(sizeof(char) * ((len + 1) * len) + 1);  //If we use here strnew and fill it with NULL terminators, we can skipp the second while loop
 	//printf("THIS IS TBLOCK BEFORE: \n%s", tblock);
 	while (tblock[j])
 	{
@@ -170,16 +172,20 @@ static char 			*re_adjust(char *tblock, size_t len)
 		adjusted[i++] = tblock[j++];
 	}
 	//printf("ADJUSTED: \n%s", adjusted);
-	while (i < (((len + 1) * len) + 1)) //Without this while makes it much faster, but perhaps it is not as safe. See comment above.
+	//Without it makes it much faster, but perhaps it is not as safe. See comment above.
+	/*
+	while (i < (((len + 1) * len) + 1))
 	{	
 		adjusted[i] = '.';
 		(i % (len + 1) == 0 && i != 0) ? adjusted[i] = '\n' : 0;
 		i++;
 	}
+	*/
 	adjusted[i] = '\0';
 	//printf("LEN OF ADJUSTED: %zu\n", ft_strlen(adjusted));
 	//printf("TOTAL SIZE: %zu\n", (len + 1) * len);
 	return (adjusted = purify(adjusted, ((len + 1) * len)));
+	//return (adjusted);
 }
 
 static void		increase_block(t_list **alst, size_t len)
