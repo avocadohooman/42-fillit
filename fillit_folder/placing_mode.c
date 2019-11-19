@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   placing_mode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:48:52 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/15 11:23:26 by gmolin           ###   ########.fr       */
+/*   Updated: 2019/11/19 12:55:33 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h> // remove
 
-static int	check_blocks(char *new, char *board)
+static int			check_board(char *new, char *board)
 {
 	size_t		let_a;
 	size_t		let_b;
@@ -37,27 +36,40 @@ static int	check_blocks(char *new, char *board)
 	}
 	if (let_a - let_b == 4)
 		return (1);
-	//printf("\033[0;31mPlacing Error\033[0m\t\n");
 	return (0);
 }
 
-int				slap(char *board, char *tblock, size_t start)
+static char			*downsize(char *tblock, size_t len)
 {
-	size_t		i;
-	size_t		j;
-	char		*new;
+	size_t	i;
+	size_t	j;
+	char	*new;
+	size_t	len2;
 
-	i = start;
+	new = ft_strnew((len + 1) * len);
+	i = 0;
 	j = 0;
-	//printf("A BOARD:\n%s", board);
-	//printf("A TBLOCK:\n%s", tblock);
-	new = NULL;
-	new = ft_strdup(board);
-	//printf("A NEW COPY:\n%s", new);
-	//return (0);
-	//printf("STRLEN OF NEW BEFORE: %zu\n", ft_strlen(new));
-	//printf("J BEFORE: %zu\n", j);
-	//I printf("I BEFORE: %zu\n", i);
+	len2 = 0;
+	while (i < 13)
+	{
+		if (len2 == 3)
+		{
+			new[j] = '\n';
+			i = i + 2;
+			j++;
+			len2 = 0;
+		}
+		new[j] = tblock[i];
+		j++;
+		i++;
+		len2++;
+	}
+	new[j] = '\n';
+	return (new);
+}
+
+static void			placing(char *new, char *tblock, size_t i, size_t j)
+{
 	while (i < ft_strlen(new) - 1 && new[i] && tblock[j])
 	{
 		(tblock[j] == '\n') ? j++ : 0;
@@ -71,19 +83,32 @@ int				slap(char *board, char *tblock, size_t start)
 		i++;
 		j++;
 	}
-	//printf("J AFTER: %zu\n", j);
-	//printf("I AFTER: %zu\n", i);
-	//printf("AFTER PLACING\n%s", new);
-	//printf("STRLEN OF NEW: %zu\n", ft_strlen(new));
-	//printf("STRLEN OF TBLOCK: %zu\n", ft_strlen(tblock));
-	//return (0);
-	if (!check_blocks(new, board))
+}
+
+int					slap(char *board, char *tblock, size_t start)
+{
+	size_t		i;
+	size_t		j;
+	char		*new;
+	char		*tmp;
+
+	i = start;
+	j = 0;
+	new = ft_strdup(board);
+	if (ft_strclen(new, '\n') == 3)
+	{
+		tmp = downsize(tblock, 3);
+		placing(new, tmp, i, j);
+		ft_strdel(&tmp);
+	}
+	else
+		placing(new, tblock, i, j);
+	if (!check_board(new, board))
 	{
 		ft_strdel(&new);
 		return (0);
 	}
 	ft_memmove(board, new, ft_strlen(new));
 	ft_strdel(&new);
-	//ft_putendl(board);
 	return (1);
 }

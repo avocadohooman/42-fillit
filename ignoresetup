@@ -1,0 +1,9 @@
+.vscode
+.DS_Store
+*.o
+libft.a
+tetris_blocks
+test_invalid.sh
+test.sh
+compile.sh
+a.out

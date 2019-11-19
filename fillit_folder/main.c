@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:33:33 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/14 11:56:04 by vkuokka          ###   ########.fr       */
+/*   Updated: 2019/11/19 13:40:43 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ static char		*read_file(int fd)
 		free(tmp);
 	}
 	if (count < 0)
-	{
-		ft_putstr("Reading Error");
-		return (0);
-	}
+		return (NULL);
 	return (file);
 }
 
@@ -43,23 +40,22 @@ int				main(int argc, char **argv)
 	char		*file;
 
 	if (argc == 1)
-	{
 		ft_putstr("usage: fillit [] source_file");
-		return (0);
-	}
 	else if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		if (!(file = read_file(fd)))
-			return (-1);
+		if (!(file = read_file(fd)) || !create_mode(file))
+		{
+			ft_putstr("error");
+			ft_putchar('\n');
+		}
+		ft_strdel(&file);
 		close(fd);
-		if (!create_mode(file))
-		 	return (-1);
 	}
 	else
 	{
 		ft_putstr("Too many arguments");
-		return (-1);
+		ft_putchar('\n');
 	}
 	return (0);
 }
