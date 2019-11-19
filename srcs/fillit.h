@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:11:15 by gmolin            #+#    #+#             */
-/*   Updated: 2019/11/18 15:18:38 by vkuokka          ###   ########.fr       */
+/*   Updated: 2019/11/19 14:09:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
-# include "../libft_folder/includes/libft.h"
+# include "libft.h"
+# include <fcntl.h>
 # define BUFF_SIZE 1
 
 int			create_mode(char *file);

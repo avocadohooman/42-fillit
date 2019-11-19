@@ -6,12 +6,11 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:33:33 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/19 13:40:43 by gmolin           ###   ########.fr       */
+/*   Updated: 2019/11/19 15:37:13 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
 
 static char		*read_file(int fd)
 {
@@ -40,22 +39,16 @@ int				main(int argc, char **argv)
 	char		*file;
 
 	if (argc == 1)
-		ft_putstr("usage: fillit [] source_file");
+		ft_putendl("usage: ./fillit [] source_file");
 	else if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (!(file = read_file(fd)) || !create_mode(file))
-		{
-			ft_putstr("error");
-			ft_putchar('\n');
-		}
+			ft_putendl("error");
 		ft_strdel(&file);
 		close(fd);
 	}
 	else
-	{
-		ft_putstr("Too many arguments");
-		ft_putchar('\n');
-	}
+		ft_putendl("error");
 	return (0);
 }
