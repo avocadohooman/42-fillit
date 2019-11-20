@@ -76,9 +76,9 @@ static t_list		*add_block(char *s)
 	static int		letter;
 	size_t			i;
 
-	if (letter >= 25 || !verify_block(s))
+	if (letter > 26 || !verify_block(s))
 	{
-		if (letter >= 25)
+		if (letter > 26)
 			ft_strdel(&s);
 		else
 			ft_lstdel(&lstbegin, &ft_del);

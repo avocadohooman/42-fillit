@@ -49,6 +49,6 @@ int				main(int argc, char **argv)
 		close(fd);
 	}
 	else
-		ft_putendl("error");
+		ft_putendl("usage: ./fillit [] source_file");
 	return (0);
 }
