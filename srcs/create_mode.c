@@ -6,12 +6,11 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:27:40 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/20 16:05:25 by gmolin           ###   ########.fr       */
+/*   Updated: 2019/11/20 17:03:42 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int			verify_block(char *s)
 {
@@ -110,10 +109,12 @@ static int			setup(t_list **alst)
 			return (1);
 		}
 	len = ft_lstlen(alst);
+	if (len > 4)
+		increase_block(alst, board_size(len));
 	while (!(solve_mode(board_mode(len), *alst, 0, board_mode(len))))
 	{
 		len++;
-		if (len > 3)
+		if (len > 4)
 			increase_block(alst, board_size(len));
 	}
 	ft_lstdel(alst, ft_del);

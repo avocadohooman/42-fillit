@@ -6,12 +6,11 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 13:48:52 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/20 15:52:06 by gmolin           ###   ########.fr       */
+/*   Updated: 2019/11/20 17:03:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int			check_board(char *new, char *board)
 {
