@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: vkuokka <vkuokka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:33:33 by vkuokka           #+#    #+#             */
-/*   Updated: 2019/11/20 17:03:18 by gmolin           ###   ########.fr       */
+/*   Updated: 2019/11/22 12:32:46 by vkuokka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@ static char		*read_file(int fd)
 	char		*file;
 	char		*tmp;
 	int			count;
+	size_t		i;
 
+	i = 0;
 	if (!(file = ft_strnew(0)))
 		return (NULL);
 	while ((count = read(fd, rline, BUFF_SIZE)) > 0)
 	{
 		rline[count] = '\0';
+		i += count;
 		tmp = file;
 		file = ft_strjoin(file, rline);
 		free(tmp);
 	}
 	if (count < 0)
+		return (NULL);
+	if (file[i - 2] == '\n')
 		return (NULL);
 	return (file);
 }
