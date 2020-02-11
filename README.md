@@ -19,4 +19,4 @@ For future developments:
 
 # Preview
 
-<img src="https://raw.githubusercontent.com/avocadohooman/42-filler/master/readme_assets/preview%20%231.png"></img>
+<img src="https://raw.githubusercontent.com/avocadohooman/42-fillit/master/readme_assets/preview_1.png"></img>
